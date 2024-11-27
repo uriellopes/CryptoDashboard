@@ -30,16 +30,12 @@ const Dashboard = () => {
         </Box>
       </Box>
       <Grid container>
-        <Grid size={6}>
+        <Grid size={12}>
           <PriceChart />
         </Grid>
-        <Grid size={6}>
+        <Grid size={12}>
           <VolumeChart />
         </Grid>
-        <Grid size={6}>Variação percentual</Grid>
-        <Grid size={6}>Histórico de preço</Grid>
-        <Grid size={6}>Comparação Marketing Cap</Grid>
-        <Grid size={6}>Maior valorização</Grid>
       </Grid>
     </Box>
   );

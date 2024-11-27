@@ -20,6 +20,11 @@ const options: ApexCharts.ApexOptions = {
   xaxis: {
     type: "datetime",
   },
+  yaxis: {
+    labels: {
+      formatter: (value: number) => `$${value.toFixed(0)}`,
+    },
+  },
 };
 
 export const VolumeChart = () => {
