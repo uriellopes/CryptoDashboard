@@ -1,14 +1,19 @@
 import { Layout } from "./components/Layout";
 import GlobalContextProvider from "./context/GlobalContextProvider";
 import Dashboard from "./views/Dashboard";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
-    <GlobalContextProvider>
-      <Layout>
-        <Dashboard />
-      </Layout>
-    </GlobalContextProvider>
+    <SnackbarProvider
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+    >
+      <GlobalContextProvider>
+        <Layout>
+          <Dashboard />
+        </Layout>
+      </GlobalContextProvider>
+    </SnackbarProvider>
   );
 }
 

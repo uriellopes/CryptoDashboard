@@ -8,6 +8,9 @@ interface GlobalContextProviderProps {
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
   const [serverStatus, setServerStatus] = useState<boolean>(false);
+  const [currentCoin, setCurrentCoin] = useState<string>("bitcoin");
+  const [days, setDays] = useState<number>(7);
+  const [currency, setCurrency] = useState<string>("brl");
 
   useEffect(() => {
     checkApiServerStatus()
@@ -20,7 +23,9 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ serverStatus }}>
+    <GlobalContext.Provider
+      value={{ serverStatus, currentCoin, days, currency }}
+    >
       {children}
     </GlobalContext.Provider>
   );

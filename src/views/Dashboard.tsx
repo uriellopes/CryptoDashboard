@@ -4,6 +4,7 @@ import { SearchButton } from "../components/SearchButton";
 import { OfflineServerMessage } from "../components/OfflineServerMessage";
 import { PageTitle } from "../components/PageTitle";
 import Grid from "@mui/material/Grid2";
+import { PriceChart } from "../components/charts/PriceChart";
 
 const Dashboard = () => {
   const { serverStatus } = useGlobalContextHook();
@@ -24,7 +25,9 @@ const Dashboard = () => {
         </Box>
       </Box>
       <Grid container>
-        <Grid size={6}>Preço</Grid>
+        <Grid size={6}>
+          <PriceChart />
+        </Grid>
         <Grid size={6}>Volume</Grid>
         <Grid size={6}>Variação percentual</Grid>
         <Grid size={6}>Histórico de preço</Grid>
