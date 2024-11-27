@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid2";
 import { PriceChart } from "../components/charts/PriceChart";
 import { SelectDays } from "../components/SelectDays";
 import { SelectCurrencyButton } from "../components/SelectCurrencyButton";
+import { VolumeChart } from "../components/charts/VolumeChart";
 
 const Dashboard = () => {
   const { serverStatus } = useGlobalContextHook();
@@ -32,7 +33,9 @@ const Dashboard = () => {
         <Grid size={6}>
           <PriceChart />
         </Grid>
-        <Grid size={6}>Volume</Grid>
+        <Grid size={6}>
+          <VolumeChart />
+        </Grid>
         <Grid size={6}>Variação percentual</Grid>
         <Grid size={6}>Histórico de preço</Grid>
         <Grid size={6}>Comparação Marketing Cap</Grid>

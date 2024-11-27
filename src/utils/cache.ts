@@ -1,25 +1,16 @@
 import { CoinPrices } from "../models/Coin";
 import { Days } from "../models/Days";
+import { Volume } from "../models/Volume";
 import { CURRENCY_INITIAL_VALUE, DAYS_INITIAL_VALUE } from "./constants";
 
 const PRICES_LOCAL_STORAGE_KEY = "@cryptodashboard-prices";
 const SELECTED_DAYS_KEY = "@cryptodashboard-days";
 const SELECTED_CURRENCY_KEY = "@cryptodashboard-currency";
 const LIST_CURRENCY_KEY = "@cryptodashboard-list-currency";
+const VOLUMES_KEY = "@cryptodashboard-volumes";
 
 export const savePriceLocalStorage = (data: CoinPrices) => {
   localStorage.setItem(PRICES_LOCAL_STORAGE_KEY, JSON.stringify(data));
-};
-
-export const loadPricesData = () => {
-  const localData = localStorage.getItem(PRICES_LOCAL_STORAGE_KEY);
-
-  if (localData) {
-    const parsedData: CoinPrices = JSON.parse(localData);
-    return parsedData;
-  }
-
-  return null;
 };
 
 export const saveDaysLocalStorage = (data: Days) => {
@@ -63,4 +54,8 @@ export const loadListCurrencyLocalStorage = () => {
   } else {
     return ["brl"];
   }
+};
+
+export const saveVolumesLocalStorage = (data: Volume) => {
+  localStorage.setItem(VOLUMES_KEY, JSON.stringify(data));
 };

@@ -1,22 +1,17 @@
 import ApexCharts from "react-apexcharts";
-import Box from "@mui/material/Box";
-import { CircularProgress } from "@mui/material";
-import { useGlobalContextHook } from "../../hooks/GlobalContextHook";
 import { ChartApiErrorMessage } from "../ChartApiErrorMessage";
+import { useGlobalContextHook } from "../../hooks/GlobalContextHook";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const options: ApexCharts.ApexOptions = {
   chart: {
-    type: "area",
+    type: "line",
     stacked: false,
     height: 350,
-    zoom: {
-      type: "x",
-      enabled: true,
-      autoScaleYaxis: true,
-    },
   },
   title: {
-    text: "Preço",
+    text: "Volume",
     align: "left",
   },
   xaxis: {
@@ -24,8 +19,8 @@ const options: ApexCharts.ApexOptions = {
   },
 };
 
-export const PriceChart = () => {
-  const { prices, isLoadingPriceVolume, showApiErrorMessagePriceVolume } =
+export const VolumeChart = () => {
+  const { volumes, isLoadingPriceVolume, showApiErrorMessagePriceVolume } =
     useGlobalContextHook();
 
   if (isLoadingPriceVolume)
@@ -40,7 +35,7 @@ export const PriceChart = () => {
       <ApexCharts
         type="line"
         height={350}
-        series={[{ name: "Preço", data: prices }]}
+        series={[{ name: "Volume", data: volumes }]}
         options={options}
       />
       {showApiErrorMessagePriceVolume && <ChartApiErrorMessage />}
