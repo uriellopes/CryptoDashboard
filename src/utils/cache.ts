@@ -1,5 +1,6 @@
 import { CoinPrices } from "../models/Coin";
 import { Days } from "../models/Days";
+import { DAYS_INITIAL_VALUE } from "./constants";
 
 const PRICES_LOCAL_STORAGE_KEY = "@cryptodashboard-prices";
 const SELECTED_DAYS_KEY = "@cryptodashboard-days";
@@ -29,6 +30,6 @@ export const loadDaysLocalStorage = () => {
   if (localDay) {
     return localDay;
   } else {
-    return "7";
+    return DAYS_INITIAL_VALUE;
   }
 };
