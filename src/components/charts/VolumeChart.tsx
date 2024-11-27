@@ -10,6 +10,9 @@ const options: ApexCharts.ApexOptions = {
     stacked: false,
     height: 350,
   },
+  stroke: {
+    curve: "stepline",
+  },
   title: {
     text: "Volume",
     align: "left",
