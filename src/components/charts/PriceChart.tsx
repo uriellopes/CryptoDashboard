@@ -13,7 +13,7 @@ import { saveDataLocalStorage } from "../../utils/cache";
 import { PRICES_LOCAL_STORAGE_KEY } from "../../utils/localStorageKeys";
 import { loadPricesData } from "../../utils/coins";
 
-var options: ApexCharts.ApexOptions = {
+const options: ApexCharts.ApexOptions = {
   chart: {
     type: "area",
     stacked: false,
@@ -75,7 +75,7 @@ export const PriceChart = () => {
       clearInterval(intervalId);
     }
 
-    if (firstRenderRef) {
+    if (firstRenderRef.current) {
       firstRenderRef.current = false;
       updateData();
     } else {

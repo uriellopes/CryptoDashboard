@@ -5,6 +5,7 @@ import { OfflineServerMessage } from "../components/OfflineServerMessage";
 import { PageTitle } from "../components/PageTitle";
 import Grid from "@mui/material/Grid2";
 import { PriceChart } from "../components/charts/PriceChart";
+import { SelectDays } from "../components/SelectDays";
 
 const Dashboard = () => {
   const { serverStatus } = useGlobalContextHook();
@@ -20,7 +21,8 @@ const Dashboard = () => {
         <Box>
           <PageTitle title="Dashboard" />
         </Box>
-        <Box>
+        <Box display={"flex"} gap={"10px"}>
+          <SelectDays />
           <SearchButton />
         </Box>
       </Box>

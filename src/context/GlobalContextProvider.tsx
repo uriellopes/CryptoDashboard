@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import { checkApiServerStatus } from "../services/serverStatus";
+import { Days } from "../models/Days";
 
 interface GlobalContextProviderProps {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ interface GlobalContextProviderProps {
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
   const [serverStatus, setServerStatus] = useState<boolean>(false);
   const [currentCoin, setCurrentCoin] = useState<string>("bitcoin");
-  const [days, setDays] = useState<number>(7);
+  const [days, setDays] = useState<Days>("7");
   const [currency, setCurrency] = useState<string>("brl");
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
 
   return (
     <GlobalContext.Provider
-      value={{ serverStatus, currentCoin, days, currency }}
+      value={{ serverStatus, currentCoin, days, currency, setDays }}
     >
       {children}
     </GlobalContext.Provider>
