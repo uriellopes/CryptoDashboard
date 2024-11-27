@@ -11,7 +11,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
 
   useEffect(() => {
     checkApiServerStatus()
-      .then(() => setServerStatus(false))
+      .then(() => setServerStatus(true))
       .catch(() => setServerStatus(false));
 
     return () => {
