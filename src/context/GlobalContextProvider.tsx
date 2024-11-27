@@ -8,7 +8,7 @@ interface GlobalContextProviderProps {
 }
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
-  const [serverStatus, setServerStatus] = useState<boolean>(false);
+  const [serverStatus, setServerStatus] = useState<boolean>(true);
   const [currentCoin, setCurrentCoin] = useState<string>("bitcoin");
   const [days, setDays] = useState<Days>("7");
   const [currency, setCurrency] = useState<string>("brl");
