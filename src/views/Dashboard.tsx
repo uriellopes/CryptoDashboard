@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { useGlobalContextHook } from "../hooks/GlobalContextHook";
-import { SearchButton } from "../components/SearchButton";
+import { SearchField } from "../components/SearchField";
 import { OfflineServerMessage } from "../components/OfflineServerMessage";
 import { PageTitle } from "../components/PageTitle";
 import Grid from "@mui/material/Grid2";
@@ -25,7 +25,7 @@ const Dashboard = () => {
         <Box display={"flex"} gap={"10px"}>
           <SelectCurrencyButton />
           <SelectDays />
-          <SearchButton />
+          <SearchField />
         </Box>
       </Box>
       <Grid container>

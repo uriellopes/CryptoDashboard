@@ -33,7 +33,7 @@ const options: ApexCharts.ApexOptions = {
 };
 
 export const PriceChart = () => {
-  const { currentCoin, days, currency } = useGlobalContextHook();
+  const { coin, days, currency } = useGlobalContextHook();
   const { enqueueSnackbar } = useSnackbar();
 
   const [prices, setPrices] = useState<CoinPrices>([]);
@@ -44,7 +44,7 @@ export const PriceChart = () => {
 
   const fetchData = () => {
     setIsLoading(true);
-    getCoinPrice(currentCoin, days, currency)
+    getCoinPrice(coin, days, currency)
       .then((response) => {
         const prices = response.data.prices;
         setPrices(prices);
@@ -88,7 +88,7 @@ export const PriceChart = () => {
         clearInterval(newIntervalId);
       }
     };
-  }, [currentCoin, days, currency]);
+  }, [coin, days, currency]);
 
   if (isLoading)
     return (

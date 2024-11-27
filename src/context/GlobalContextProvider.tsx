@@ -11,7 +11,7 @@ interface GlobalContextProviderProps {
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
   const [serverStatus, setServerStatus] = useState<boolean>(true);
-  const [currentCoin, setCurrentCoin] = useState<string>(COIN_INITIAL_VALUE);
+  const [coin, setCoin] = useState<string>(COIN_INITIAL_VALUE);
   const [days, setDays] = useState<Days>(loadDaysLocalStorage());
   const [currency, setCurrency] = useState<string>(loadCurrencyLocalStorage());
 
@@ -29,7 +29,8 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     <GlobalContext.Provider
       value={{
         serverStatus,
-        currentCoin,
+        coin,
+        setCoin,
         days,
         setDays,
         currency,

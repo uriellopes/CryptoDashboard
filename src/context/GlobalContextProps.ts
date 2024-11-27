@@ -2,7 +2,8 @@ import { Days } from "../models/Days";
 
 interface GlobalContextProps {
   serverStatus: boolean;
-  currentCoin: string;
+  coin: string;
+  setCoin: (coin: string) => void;
   days: Days;
   setDays: (day: Days) => void;
   currency: string;
