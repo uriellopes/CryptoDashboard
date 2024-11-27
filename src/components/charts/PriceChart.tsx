@@ -9,9 +9,7 @@ import {
 import { useGlobalContextHook } from "../../hooks/GlobalContextHook";
 import { useSnackbar } from "notistack";
 import { CoinPrices } from "../../models/Coin";
-import { saveDataLocalStorage } from "../../utils/cache";
-import { PRICES_LOCAL_STORAGE_KEY } from "../../utils/localStorageKeys";
-import { loadPricesData } from "../../utils/coins";
+import { loadPricesData, savePriceLocalStorage } from "../../utils/cache";
 import { ChartApiErrorMessage } from "../ChartApiErrorMessage";
 
 const options: ApexCharts.ApexOptions = {
@@ -50,7 +48,7 @@ export const PriceChart = () => {
       .then((response) => {
         const prices = response.data.prices;
         setPrices(prices);
-        saveDataLocalStorage(PRICES_LOCAL_STORAGE_KEY, prices);
+        savePriceLocalStorage(prices);
 
         if (showApiErrorMessage) {
           setShwoApiErrorMessage(false);

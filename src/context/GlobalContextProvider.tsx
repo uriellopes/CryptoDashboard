@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import { checkApiServerStatus } from "../services/serverStatus";
 import { Days } from "../models/Days";
+import { loadDaysLocalStorage } from "../utils/cache";
 
 interface GlobalContextProviderProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface GlobalContextProviderProps {
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
   const [serverStatus, setServerStatus] = useState<boolean>(true);
   const [currentCoin, setCurrentCoin] = useState<string>("bitcoin");
-  const [days, setDays] = useState<Days>("7");
+  const [days, setDays] = useState<Days>(loadDaysLocalStorage());
   const [currency, setCurrency] = useState<string>("brl");
 
   useEffect(() => {

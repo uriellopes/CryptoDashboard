@@ -4,12 +4,15 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useGlobalContextHook } from "../hooks/GlobalContextHook";
 import MenuItem from "@mui/material/MenuItem";
 import { Days } from "../models/Days";
+import { saveDaysLocalStorage } from "../utils/cache";
 
 export const SelectDays = () => {
   const { days, setDays } = useGlobalContextHook();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setDays(event.target.value as Days);
+    const value = event.target.value as Days;
+    setDays(value);
+    saveDaysLocalStorage(value);
   };
 
   return (
