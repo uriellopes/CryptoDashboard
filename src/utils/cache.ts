@@ -1,9 +1,11 @@
 import { CoinPrices } from "../models/Coin";
 import { Days } from "../models/Days";
-import { DAYS_INITIAL_VALUE } from "./constants";
+import { CURRENCY_INITIAL_VALUE, DAYS_INITIAL_VALUE } from "./constants";
 
 const PRICES_LOCAL_STORAGE_KEY = "@cryptodashboard-prices";
 const SELECTED_DAYS_KEY = "@cryptodashboard-days";
+const SELECTED_CURRENCY_KEY = "@cryptodashboard-currency";
+const LIST_CURRENCY_KEY = "@cryptodashboard-list-currency";
 
 export const savePriceLocalStorage = (data: CoinPrices) => {
   localStorage.setItem(PRICES_LOCAL_STORAGE_KEY, JSON.stringify(data));
@@ -20,16 +22,45 @@ export const loadPricesData = () => {
   return null;
 };
 
-export const saveDaysLocalStorage = (day: Days) => {
-  localStorage.setItem(SELECTED_DAYS_KEY, day);
+export const saveDaysLocalStorage = (data: Days) => {
+  localStorage.setItem(SELECTED_DAYS_KEY, data);
 };
 
 export const loadDaysLocalStorage = () => {
-  const localDay = localStorage.getItem(SELECTED_DAYS_KEY) as Days | null;
+  const localData = localStorage.getItem(SELECTED_DAYS_KEY) as Days | null;
 
-  if (localDay) {
-    return localDay;
+  if (localData) {
+    return localData;
   } else {
     return DAYS_INITIAL_VALUE;
+  }
+};
+
+export const saveCurrencyLocalStorage = (data: string) => {
+  localStorage.setItem(SELECTED_CURRENCY_KEY, data);
+};
+
+export const loadCurrencyLocalStorage = () => {
+  const localData = localStorage.getItem(SELECTED_CURRENCY_KEY);
+
+  if (localData) {
+    return localData;
+  } else {
+    return CURRENCY_INITIAL_VALUE;
+  }
+};
+
+export const saveListCurrencyLocalStorage = (data: string[]) => {
+  localStorage.setItem(LIST_CURRENCY_KEY, JSON.stringify(data));
+};
+
+export const loadListCurrencyLocalStorage = () => {
+  const localData = localStorage.getItem(LIST_CURRENCY_KEY);
+
+  if (localData) {
+    const parsedData: string[] = JSON.parse(localData);
+    return parsedData;
+  } else {
+    return ["brl"];
   }
 };

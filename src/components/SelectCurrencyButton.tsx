@@ -6,22 +6,40 @@ import MenuItem from "@mui/material/MenuItem";
 import { useGlobalContextHook } from "../hooks/GlobalContextHook";
 import { useEffect, useState } from "react";
 import { getCurrencyList } from "../services/currency";
+import { useSnackbar } from "notistack";
+import {
+  loadListCurrencyLocalStorage,
+  saveCurrencyLocalStorage,
+  saveListCurrencyLocalStorage,
+} from "../utils/cache";
 
 export const SelectCurrencyButton = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const { currency, setCurrency } = useGlobalContextHook();
   const [currencyList, setCurrencyList] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      await getCurrencyList().then((response) =>
-        setCurrencyList(response.data)
-      );
+      await getCurrencyList()
+        .then((response) => {
+          setCurrencyList(response.data);
+          saveListCurrencyLocalStorage(response.data);
+        })
+        .catch(() => {
+          enqueueSnackbar("Ocorreu um problema ao carregar as moedas!", {
+            variant: "error",
+          });
+
+          setCurrencyList(loadListCurrencyLocalStorage());
+        });
     };
 
     fetchData();
   }, []);
 
   const handleChange = (event: SelectChangeEvent) => {
+    saveCurrencyLocalStorage(event.target.value);
     setCurrency(event.target.value);
   };
 
@@ -36,8 +54,10 @@ export const SelectCurrencyButton = () => {
           label="Moeda"
           onChange={handleChange}
         >
-          {currencyList.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {currencyList.map((item, index) => (
+            <MenuItem value={item} key={`menu-item-currency-list-${index}`}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
