@@ -6,6 +6,7 @@ import { PageTitle } from "../components/PageTitle";
 import Grid from "@mui/material/Grid2";
 import { PriceChart } from "../components/charts/PriceChart";
 import { SelectDays } from "../components/SelectDays";
+import { SelectCurrencyButton } from "../components/SelectCurrencyButton";
 
 const Dashboard = () => {
   const { serverStatus } = useGlobalContextHook();
@@ -22,6 +23,7 @@ const Dashboard = () => {
           <PageTitle title="Dashboard" />
         </Box>
         <Box display={"flex"} gap={"10px"}>
+          <SelectCurrencyButton />
           <SelectDays />
           <SearchButton />
         </Box>

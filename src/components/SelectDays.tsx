@@ -5,6 +5,7 @@ import { useGlobalContextHook } from "../hooks/GlobalContextHook";
 import MenuItem from "@mui/material/MenuItem";
 import { Days } from "../models/Days";
 import { saveDaysLocalStorage } from "../utils/cache";
+import Box from "@mui/material/Box";
 
 export const SelectDays = () => {
   const { days, setDays } = useGlobalContextHook();
@@ -16,20 +17,22 @@ export const SelectDays = () => {
   };
 
   return (
-    <FormControl fullWidth>
-      <InputLabel id="select-range-days">Dias</InputLabel>
-      <Select
-        labelId="select-range-days"
-        id="demo-simple-select"
-        value={days}
-        label="Age"
-        onChange={handleChange}
-      >
-        <MenuItem value={1}>1</MenuItem>
-        <MenuItem value={7}>7</MenuItem>
-        <MenuItem value={14}>14</MenuItem>
-        <MenuItem value={30}>30</MenuItem>
-      </Select>
-    </FormControl>
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="select-range-days">Dias</InputLabel>
+        <Select
+          labelId="select-range-days"
+          id="select-days-input"
+          value={days}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={14}>14</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
 };

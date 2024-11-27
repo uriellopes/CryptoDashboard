@@ -27,7 +27,14 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
 
   return (
     <GlobalContext.Provider
-      value={{ serverStatus, currentCoin, days, currency, setDays }}
+      value={{
+        serverStatus,
+        currentCoin,
+        days,
+        setDays,
+        currency,
+        setCurrency,
+      }}
     >
       {children}
     </GlobalContext.Provider>

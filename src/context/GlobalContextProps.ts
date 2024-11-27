@@ -4,8 +4,9 @@ interface GlobalContextProps {
   serverStatus: boolean;
   currentCoin: string;
   days: Days;
-  currency: string;
   setDays: (day: Days) => void;
+  currency: string;
+  setCurrency: (currency: string) => void;
 }
 
 export default GlobalContextProps;
