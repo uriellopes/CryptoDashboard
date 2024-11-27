@@ -17,7 +17,9 @@ export const Layout = ({ children }: LayoutProps) => {
       <Header />
       <Box display={"flex"} height={"100%"}>
         <Sidebar />
-        {children}
+        <Box padding={5} width={"100%"}>
+          {children}
+        </Box>
       </Box>
     </Container>
   );

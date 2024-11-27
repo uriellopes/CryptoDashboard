@@ -1,10 +1,13 @@
+import { Layout } from "./components/Layout";
 import GlobalContextProvider from "./context/GlobalContextProvider";
 import Dashboard from "./views/Dashboard";
 
 function App() {
   return (
     <GlobalContextProvider>
-      <Dashboard />
+      <Layout>
+        <Dashboard />
+      </Layout>
     </GlobalContextProvider>
   );
 }

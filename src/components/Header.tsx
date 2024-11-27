@@ -8,7 +8,8 @@ export const Header = () => {
       <Toolbar>
         <Typography
           component={"h1"}
-          sx={{ textTransform: "uppercase", fontWeight: "bold" }}
+          fontWeight={"bold"}
+          sx={{ textTransform: "uppercase" }}
         >
           {import.meta.env.VITE_APP_NAME}
         </Typography>
