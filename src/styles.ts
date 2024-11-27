@@ -6,4 +6,10 @@ export const Colors = {
     bg: "#bebec0",
     text: "#726a6a",
   },
+  red: {
+    main: "#f71d1d",
+  },
+  white: {
+    main: "#FFF",
+  },
 };

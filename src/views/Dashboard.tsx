@@ -3,12 +3,18 @@ import { useGlobalContextHook } from "../hooks/GlobalContextHook";
 import Typography from "@mui/material/Typography";
 import { SearchButton } from "../components/SearchButton";
 import { Colors } from "../styles";
+import { OfflineServerMessage } from "../components/OfflineServerMessage";
 
 const Dashboard = () => {
-  const { title } = useGlobalContextHook();
+  const { serverStatus } = useGlobalContextHook();
 
   return (
     <Box>
+      {!serverStatus && (
+        <Box marginBottom={1}>
+          <OfflineServerMessage />
+        </Box>
+      )}
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box>
           <Typography
@@ -17,7 +23,7 @@ const Dashboard = () => {
             fontSize={36}
             color={Colors.black.main}
           >
-            {title}
+            Dashboard
           </Typography>
         </Box>
         <Box>

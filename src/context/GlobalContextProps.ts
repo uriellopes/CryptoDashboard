@@ -1,5 +1,5 @@
 interface GlobalContextProps {
-  title: string;
+  serverStatus: boolean;
 }
 
 export default GlobalContextProps;
